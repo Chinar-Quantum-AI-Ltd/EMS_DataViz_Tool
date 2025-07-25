@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.io as pio
 
-from lida.datamodel import ChartExecutorResponse, Summary
+from lida_tools.datamodel import ChartExecutorResponse, Summary
 
 
 def preprocess_code(code: str) -> str:

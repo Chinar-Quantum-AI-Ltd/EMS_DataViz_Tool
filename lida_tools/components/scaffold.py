@@ -1,6 +1,6 @@
 from dataclasses import asdict
 
-from lida.datamodel import Goal
+from lida_tools.datamodel import Goal
 
 
 # if len(plt.xticks()[0])) > 20 assuming plot is made with plt or
