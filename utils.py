@@ -2,7 +2,7 @@ from langchain_openai import ChatOpenAI
 from pymongo.mongo_client import MongoClient
 import os
 
-from lida import TextGenerationConfig
+from lida_tools import TextGenerationConfig
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any,Union

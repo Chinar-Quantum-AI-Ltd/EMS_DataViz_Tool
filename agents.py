@@ -7,7 +7,7 @@ from langchain_core.output_parsers import JsonOutputParser
 from langgraph.checkpoint.memory import MemorySaver
 
 import pandas as pd
-from lida import Manager,llm
+from lida_tools import Manager,llm
 
 from mcp import ClientSession
 from langchain_mcp_adapters.tools import load_mcp_tools
