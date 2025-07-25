@@ -1,0 +1,10 @@
+crewai-tools[mcp]
+mcp
+uv
+python-dotenv
+langchain-mcp-adapters
+langchain [openai]
+pymongo
+langchain-mongodb
+lida
+llmx openai
