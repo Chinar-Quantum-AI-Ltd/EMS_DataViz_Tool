@@ -3,7 +3,8 @@ from typing import Dict
 from llmx import TextGenerator, TextGenerationConfig, TextGenerationResponse
 
 from ..scaffold import ChartScaffold
-from lida.datamodel import Goal
+from lida_tools.datamodel import Goal
+
 
 
 system_prompt = """
