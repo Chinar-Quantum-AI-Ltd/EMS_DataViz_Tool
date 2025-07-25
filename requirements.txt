@@ -1,10 +1,11 @@
-crewai-tools[mcp]
 mcp
-uv
 python-dotenv
 langchain-mcp-adapters
 langchain [openai]
 pymongo
+langgraph
 langchain-mongodb
 lida
-llmx openai
+llmx
+pydantic
+pymongo
