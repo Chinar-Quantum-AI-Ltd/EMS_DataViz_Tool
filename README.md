@@ -70,6 +70,6 @@ See: [MCP Security Best Practices](https://github.com/mongodb-js/mongodb-mcp-ser
 ## References
 
 - [MongoDB MCP Server](https://github.com/mongodb-js/mongodb-mcp-server)
-- [LangChain Documentation](https://docs.langchain.com/)
+- [LangChain MCP Adapters](https://github.com/langchain-ai/langchain-mcp-adapters)
 - [LIDA (Language Interface for Data Analysis)](https://github.com/visheratin/lida)
 - [FastAPI](https://fastapi.tiangolo.com/)
