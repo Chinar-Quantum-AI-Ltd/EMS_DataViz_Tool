@@ -51,7 +51,7 @@ import matplotlib.pyplot as plt
 <imports>
 
 
-def plot(data: pd.DataFrame): # fucntion starts here
+def plot(data: pd.DataFrame): #dont forget this step ->define the function before writing any further code
 
     <stub> # only modify this section
     plt.title('{goal.question}', wrap=True)

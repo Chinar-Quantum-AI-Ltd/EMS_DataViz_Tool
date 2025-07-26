@@ -74,7 +74,7 @@ class Summarizer():
                     
                     #cast_date_col = datetime.fromisoformat(df[column])
                     cast_date_col= pd.to_datetime(df[column], errors='coerce')
-                    cast_date_col = cast_date_col.dt.tz_localize(None)
+                    
                     properties["min"] = cast_date_col.min()
                     properties["max"] = cast_date_col.max()
             # Add additional properties to the output dictionary

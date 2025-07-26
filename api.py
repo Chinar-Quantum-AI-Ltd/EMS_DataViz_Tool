@@ -15,7 +15,7 @@ import time
 
 import asyncio
 app = FastAPI()
-
+agent = MONGO_AGENTS()
 #defined two end points one for fetching the data other for displaying charts
 
 @app.post("/fetch_data")
@@ -33,20 +33,21 @@ async def query_mongodb(query: str = Query(..., description="Enter your query"))
     try:
 
         start = time.time()
-        agent = MONGO_AGENTS(query)
-        is_valid = agent.query_analyzer_agent()
+        
+        is_valid = agent.query_analyzer_agent(query)
         if is_valid["response"] == 0 :
             end = time.time()
             
             print(f"Agent returned in {end - start:.2f} seconds")
-            return {"input": query, "output": is_valid["description"]}
+            return JSONResponse(content={"input": query, "output": is_valid["description"]})
         
-
-
+        
+        print(f"Query analyzer returned ")
+        
         fetched_data=await agent.data_fetcher_agent()
         end = time.time()
         print(f"Agents returned in {end - start:.2f} seconds")
-        return {"input": query, "Data": fetched_data["data"], "Summary": fetched_data["answer"]}
+        return JSONResponse(content={"input": query, "Data": fetched_data["data"], "Summary": fetched_data["answer"]})
     
 
     except Exception as e:
@@ -65,14 +66,14 @@ async def generate_visuals():
     Returns the image as a renderable file.
     """
     try:
-        agent =MONGO_AGENTS()
-        charts =await agent.generate_visuals()
+        
+        charts =agent.generate_visuals()
         if  charts is None:
-            return {"error": "No query or result found to generate visuals."} 
+            return JSONResponse(content={"error": "No query or result found to generate visuals."} )
         image_bytes = base64.b64decode(charts[0].raster)
         image_stream = io.BytesIO(image_bytes)
         #this is to view the chart directly in swagger ui
-        return StreamingResponse(image_stream, media_type="chart/png")
+        return StreamingResponse(image_stream, media_type="image/png",headers={"Content-Disposition": "inline; filename=chart.png"})
 
       #this will bee used when calling the api from a frontend that decodes base64 strig:
         """return {
@@ -107,6 +108,6 @@ async def generate_visuals():
 
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="127.0.0.1", port=8000,reload= True,)
+    uvicorn.run("api:app", host="127.0.0.1", port=7000,reload= True,)
 
 

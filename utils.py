@@ -48,10 +48,9 @@ def check_mongo_connection():
         return False
     
 
-
-    
+#defined server parameters to run the mcp server in stdio setup (this does not support running application via Fast API)
 def mcp_server_params():
-# Server setup for MCP stdio connection
+#Server setup for MCP stdio connection
         server_params = StdioServerParameters(
             command="npx",
             args=[

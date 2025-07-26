@@ -41,8 +41,8 @@ class VizGenerator(object):
             {"role": "user",
              "content":
              f"""Always add a legend with various colors where appropriate. The visualization code MUST only use data fields that exist in the dataset (field_names) or fields that are transformations 
-             based on existing field_names). Only use variables that have been defined in the code or are in the dataset summary.
-             You MUST return a FULL PYTHON PROGRAM ENCLOSED IN BACKTICKS ``` starting with import statements followed by a function a return statment within that function and finally the chart = plot(data) outside the function. DO NOT add any explanation. \n\n 
+             of existing field_names). Only use variables that have been defined in the code or are in the dataset summary.
+             You MUST return a FULL PYTHON PROGRAM ENCLOSED IN BACKTICKS ``` starting with import statements followed by a function definition,  a return statment within that function and finally the chart = plot(data) outside the function. DO NOT add any explanation. \n\n 
              THE GENERATED CODE SOLUTION SHOULD BE CREATED BY MODIFYING THE SPECIFIED 
              Here is the given template : \n\n {library_template}\n\n"""}]
 
