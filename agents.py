@@ -100,7 +100,7 @@ class MONGO_AGENTS:
              
         
             
-             print("Exited stdio session cleanly")
+        
              try:
                 parsed = parser.parse(fetched_data)
                 print("Data fetched:\n")
