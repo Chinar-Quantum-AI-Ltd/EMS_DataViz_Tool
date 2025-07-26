@@ -6,7 +6,7 @@
 
 ## Overview
 
-**EMS - Data Viz Tool** is an interactive conversational system that enables users to generate data visualizations (charts/graphs) by  asking questions in natural language.
+**EMS - Data Viz Tool** is an interactive conversational system that enables users to generate data visualizations (charts/graphs) by  querying in natural language.
 
 This system leverages the power of:
 
