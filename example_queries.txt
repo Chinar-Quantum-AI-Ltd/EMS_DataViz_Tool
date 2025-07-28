@@ -1,0 +1,8 @@
+What are the top 5 days with the highest overtime hours recorded?
+which employee has taken most no of approved leaves
+what is the average break time of employees
+tell me the  average woring  hours of employees for each saperate department in the month of march
+how many unique females and unique males are there
+Which 5 users have the highest total hours worked, and what are their regular and overtime hours?
+How do total hours worked vary over time, grouped by year?
+give me the names of the employees whose break time is greater then 60 minutes
