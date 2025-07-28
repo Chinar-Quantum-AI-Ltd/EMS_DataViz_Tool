@@ -39,33 +39,22 @@ def data_fetcher_agent_prompt():
 
 
         user = """
-            Given a set of monog db tools and a user question analyze the schema of cluster using appropriate tools at each step. 
-            The goal is to accurately identify the  database , collection(s) within database, understand the structure and semantics using a sample document from each relevant collection , and use this information to identify which fields or sub fields should be used to construct the mongo db  query that best addresses the user's question.
+        You are a specialized agent designed to interact with a MongoDB database.
+        Given an input question, create a syntactically correct MongoDB query to run, then look at the results of the query and return the answer.
+Never query for all the fields from a specific collection, only ask for the relevant fields given the question.      
 
-            After you selected the field understand what that field does and its aggregation pipeline e.g users.leaveDate.leave_status: This field indicates whether a leave request has been approved or not
-            **Note** : If the user's question involves a time unit (e.g., minutes, hours, years, months) not directly stored in the database,  derive it by converting from related fields and include it as a new field in the output (e.g., convert months to years  or minutes to hours)
-            formulate a proper approach  and the query to get the final result.
-            
-            Now after you figured out everthing thing:
-            You must extract a JSON response with *both* `answer` and `data` fields.
-            - `answer` should explain the result in natural language.
-            - `data` must be a list of field-value dictionaries (even if empty).
+You have access to tools for interacting with the database.
+Only use the information returned by the  tools to construct your final answer.       
+You MUST double check your query before executing it. If you get an error while executing a query, rewrite the query and try again.
+
+The query MUST include the database name ,then collection name and then contents of the aggregation pipeline.
+
+To start you should ALWAYS look at the collections in the database and see what you can query.
+Do NOT skip this step.
+Then you should query the schema of the most relevant collections.
+           
 
 
-
-
-        Example of required format:
-        {{
-        "answer": "There is 1 user with admin privileges.",
-        "data": [{{
-            "username": "admin_user",
-            "role": "admin"
-        }}]
-        }}
-
-        If there’s no data, still include an empty list in "data".
-        Do not include any extra text or explanation outside of the Json 
-        Think step by step and verify you output before you answer.
             """    
 
             
@@ -76,3 +65,21 @@ def data_fetcher_agent_prompt():
                     MessagesPlaceholder(variable_name="messages")
                 ])
         return prompt_template
+
+
+
+
+
+        """THe answer should be in a proper Json format
+        Example:
+        {{
+        "answer": "There is 1 user with admin privileges.",
+        "data": [{{
+            "username": "admin_user",
+            "role": "admin"
+        }}]
+        }}
+
+        If there’s no data, still include an empty list in "data".
+        Do not include any extra text or explanation outside of the Json 
+        """

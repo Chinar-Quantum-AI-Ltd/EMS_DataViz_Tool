@@ -77,10 +77,19 @@ class MONGO_AGENTS:
              async with streamablehttp_client("http://localhost:3000/mcp/") as (read, write, _):
                 async with ClientSession(read, write) as session:
                     await session.initialize()
-                    self.tools = await load_mcp_tools(session)
-                    
+                    tools = await load_mcp_tools(session)
+                    excluded_tools = {
+                        "switch-connection",
+                        "collection-indexes",
+                        "collection-storage-size",
+                        "db-stats",
+                        "mongodb-logs"
+                    }
+                    self.tools = [tool for tool in tools if tool.name not in excluded_tools]
                     #print("Loaded tools:", [tool.name for tool in self.tools])
-                
+                    print("tools loaded")
+                    
+                   
                     agent=create_react_agent(model=self.model, 
                             tools=self.tools, 
                             
@@ -100,7 +109,7 @@ class MONGO_AGENTS:
              
         
             
-             print("Exited stdio session cleanly")
+             
              try:
                 parsed = parser.parse(fetched_data)
                 print("Data fetched:\n")
@@ -171,11 +180,11 @@ class MONGO_AGENTS:
 def run_agents():
 
 
-    agent = MONGO_AGENTS("which employee has taken most no of approved leaves over the years check across all the departments and  give me the name of the employee and the no of approved leaves he she has taken")
+    agent = MONGO_AGENTS()
 
     
              
-    is_valid=agent.query_analyzer_agent()
+    is_valid=agent.query_analyzer_agent("which employee has taken most no of approved leaves over the years check across all the departments and  give me the name of the employee and the no of approved leaves he she has taken")
     
     
     agent2_response=asyncio.run(agent.data_fetcher_agent())
