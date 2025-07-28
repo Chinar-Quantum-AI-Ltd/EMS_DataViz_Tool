@@ -57,7 +57,7 @@ This system leverages the power of:
 
 ## Security Note
 
-If you're using the HTTP transport mode with MongoDB MCP Server, ensure:
+If you're using the HTTP transport mode with MongoDB MCP Server ensure to :
 
 - Use HTTPS in production
 - Protect with authentication and firewalls
