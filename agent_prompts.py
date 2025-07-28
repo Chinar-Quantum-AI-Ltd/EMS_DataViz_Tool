@@ -53,6 +53,18 @@ To start you should ALWAYS look at the collections in the database and see what 
 Do NOT skip this step.
 Then you should query the schema of the most relevant collections.
            
+THe answer should be in a proper Json format
+        Example:
+        {{
+        "answer": "There is 1 user with admin privileges.",
+        "data": [{{
+            "username": "admin_user",
+            "role": "admin"
+        }}]
+        }}
+
+        If there’s no data, still include an empty list in "data".
+        Do not include any extra text or explanation outside of the Json 
 
 
             """    
@@ -69,17 +81,3 @@ Then you should query the schema of the most relevant collections.
 
 
 
-
-        """THe answer should be in a proper Json format
-        Example:
-        {{
-        "answer": "There is 1 user with admin privileges.",
-        "data": [{{
-            "username": "admin_user",
-            "role": "admin"
-        }}]
-        }}
-
-        If there’s no data, still include an empty list in "data".
-        Do not include any extra text or explanation outside of the Json 
-        """
