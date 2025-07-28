@@ -20,7 +20,7 @@ def query_analyzer_agent_prompt():
         }}
 
         ### Be reasonable in your judgement while classifying questions as valid or invalid
-
+        ### do not ask for too many specifications.
         ### You final answer  should be properly formatted  in strctured JSON
 
         Given User question: 
@@ -56,7 +56,7 @@ Then you should query the schema of the most relevant collections.
 THe answer should be in a proper Json format
         Example:
         {{
-        "answer": "There is 1 user with admin privileges.",
+        "answer": "There is 1 user with admin privileges.(this field contains the summary of the data you retrieved)",
         "data": [{{
             "username": "admin_user",
             "role": "admin"
