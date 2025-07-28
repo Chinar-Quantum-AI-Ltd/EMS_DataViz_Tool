@@ -52,20 +52,14 @@ The query MUST include the database name ,then collection name and then contents
 To start you should ALWAYS look at the collections in the database and see what you can query.
 Do NOT skip this step.
 Then you should query the schema of the most relevant collections.
-           
-THe answer should be in a proper Json format
-        Example:
-        {{
-        "answer": "There is 1 user with admin privileges.(this field contains the summary of the data you retrieved)",
-        "data": [{{
-            "username": "admin_user",
-            "role": "admin"
-        }}]
-        }}
 
-        If there’s no data, still include an empty list in "data".
-        Do not include any extra text or explanation outside of the Json 
+First form a natural language answer then:
 
+Return only a valid JSON object as the final output in the following format:
+{{
+        "answer": "<natural language summary of the data>",
+        "data": [<list of JSON objects with relevant fields>]
+}}        
 
             """    
 
@@ -81,3 +75,16 @@ THe answer should be in a proper Json format
 
 
 
+"""Return only a valid JSON object in the following format:
+{{
+        "answer": "<natural language summary of the data>",
+        "data": [<list of JSON objects with relevant fields>]
+}}
+
+
+        Instructions:
+- In the "answer" field, write a natural language summary **describing the data**.
+- Do not just say “listed below” or “as follows”. Instead, explain insights, comparisons, or trends observed in the data.
+- If no data is found, still return `"data": []` and make the summary reflect that (e.g., "No users found with admin privileges.").
+- Do not include any text outside the JSON respons
+"""
